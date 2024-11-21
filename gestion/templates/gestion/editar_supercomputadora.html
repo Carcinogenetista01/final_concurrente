@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Supercomputadora</title>
+    <style>
+        /* General */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000; /* Azul */
+            margin-top: 20px;
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            width: 50%;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #424242;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #000000;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions a:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Supercomputadora</h1>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ supercomputadora.nombre }}" required>
+
+            <label for="pais">País:</label>
+            <input type="text" id="pais" name="pais" value="{{ supercomputadora.pais }}" required>
+
+            <label for="numero_cores">Número de Cores:</label>
+            <input type="number" id="numero_cores" name="numero_cores" value="{{ supercomputadora.numero_cores }}" required>
+
+            <label for="ram_tb">RAM (TB):</label>
+            <input type="number" id="ram_tb" name="ram_tb" step="0.1" value="{{ supercomputadora.ram_tb }}" required>
+
+            <label for="almacenamiento_tb">Almacenamiento (TB):</label>
+            <input type="number" id="almacenamiento_tb" name="almacenamiento_tb" step="0.1" value="{{ supercomputadora.almacenamiento_tb }}" required>
+
+            <label for="teraflops">TeraFLOPS:</label>
+            <input type="number" id="teraflops" name="teraflops" step="0.1" value="{{ supercomputadora.teraflops }}" required>
+
+            <label for="sistema_operativo">Sistema Operativo:</label>
+            <input type="text" id="sistema_operativo" name="sistema_operativo" value="{{ supercomputadora.sistema_operativo }}" required>
+
+            <button type="submit">Actualizar</button>
+        </form>
+
+        <div class="actions">
+            <a href="{% url 'listar_supercomputadoras' %}">Volver al Inicio</a>
+            <a href="javascript:history.back()">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>
